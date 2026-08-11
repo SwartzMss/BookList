@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/sync-public-domain.yml'
+      - 'scripts/sync_books.py'
   workflow_dispatch:
 
 permissions:
