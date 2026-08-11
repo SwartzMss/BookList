@@ -37,8 +37,8 @@ BOOKS = [
         "title": "Wirtschaftsgeschichte",
         "author": "Max Weber",
         "scope": "public-domain",
-        "url": "https://archive.org/download/wirtschaftsgesch00webe/wirtschaftsgesch00webe.epub",
-        "dest": "books/public-domain/47-Wirtschaftsgeschichte-Max-Weber-1923-de.epub",
+        "url": "https://archive.org/download/wirtschaftsgesch00webe/wirtschaftsgesch00webe.pdf",
+        "dest": "books/public-domain/47-Wirtschaftsgeschichte-Max-Weber-1923-de.pdf",
         "source": "Internet Archive / Open Library",
     },
     {
