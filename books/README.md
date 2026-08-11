@@ -21,9 +21,12 @@ python3 scripts/sync_books.py
 | 原书单序号 | 书 | 版本 | 本地位置 |
 |---:|---|---|---|
 | 40 | 《股票作手回忆录》 | *Reminiscences of a Stock Operator*，英文公版 EPUB | `books/public-domain/` |
+| 47 | 《世界经济简史》 | Max Weber *Wirtschaftsgeschichte*，1923 德文原版 EPUB | `books/public-domain/` |
 | 54 | 《乌合之众》 | *The Crowd*，英文公版 EPUB | `books/public-domain/` |
 | 80 | 《地理与世界霸权》 | *Geography and World Power*，1915 英文公版 PDF | `books/public-domain/` |
 | 62 | 《美国大萧条》 | *America's Great Depression*，Mises Institute 官方 EPUB | `books/local-only/` |
+
+> 第 47 本目前先收录 1923 年德文原版。现代中文译本不因为原著进入公版而自动成为公版，因此暂不把现代中文译本放入公开仓库。
 
 只下载可以公开提交的公版文件：
 
