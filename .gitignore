@@ -1,0 +1,5 @@
+# Officially downloadable ebooks that are not confirmed redistributable.
+books/local-only/
+
+# Interrupted downloads.
+*.part
