@@ -33,6 +33,15 @@ BOOKS = [
         "source": "Project Gutenberg",
     },
     {
+        "id": 47,
+        "title": "Wirtschaftsgeschichte",
+        "author": "Max Weber",
+        "scope": "public-domain",
+        "url": "https://archive.org/download/wirtschaftsgesch00webe/wirtschaftsgesch00webe.epub",
+        "dest": "books/public-domain/47-Wirtschaftsgeschichte-Max-Weber-1923-de.epub",
+        "source": "Internet Archive / Open Library",
+    },
+    {
         "id": 54,
         "title": "The Crowd: A Study of the Popular Mind",
         "author": "Gustave Le Bon",
