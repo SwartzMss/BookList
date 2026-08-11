@@ -22,7 +22,7 @@ python3 scripts/sync_books.py
 |---:|---|---|---|
 | 18 | 《金融的本质》 | Bernanke 2012 四场官方讲座 PDF（对应原书讲座来源，**不是中文译本电子书**） | `books/local-only/18-Federal-Reserve-and-Financial-Crisis/` |
 | 40 | 《股票作手回忆录》 | *Reminiscences of a Stock Operator*，英文公版 EPUB | `books/public-domain/` |
-| 47 | 《世界经济简史》 | Max Weber *Wirtschaftsgeschichte*，1923 德文原版 EPUB | `books/public-domain/` |
+| 47 | 《世界经济简史》 | Max Weber *Wirtschaftsgeschichte*，1923 德文原版 PDF | `books/public-domain/` |
 | 54 | 《乌合之众》 | *The Crowd*，英文公版 EPUB | `books/public-domain/` |
 | 62 | 《美国大萧条》 | *America's Great Depression*，Mises Institute 官方 EPUB | `books/local-only/` |
 | 80 | 《地理与世界霸权》 | *Geography and World Power*，1915 英文公版 PDF | `books/public-domain/` |
