@@ -1,0 +1,32 @@
+name: Sync public-domain ebooks
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-public-domain.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download public-domain ebooks
+        run: python3 scripts/sync_books.py --scope public-domain
+
+      - name: Commit ebook files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add books/public-domain
+          if git diff --cached --quiet; then
+            echo "No ebook changes to commit."
+            exit 0
+          fi
+          git commit -m "Add public-domain ebook files"
+          git push
