@@ -20,13 +20,16 @@ python3 scripts/sync_books.py
 
 | 原书单序号 | 书 | 版本 | 本地位置 |
 |---:|---|---|---|
+| 18 | 《金融的本质》 | Bernanke 2012 四场官方讲座 PDF（对应原书讲座来源，**不是中文译本电子书**） | `books/local-only/18-Federal-Reserve-and-Financial-Crisis/` |
 | 40 | 《股票作手回忆录》 | *Reminiscences of a Stock Operator*，英文公版 EPUB | `books/public-domain/` |
 | 47 | 《世界经济简史》 | Max Weber *Wirtschaftsgeschichte*，1923 德文原版 EPUB | `books/public-domain/` |
 | 54 | 《乌合之众》 | *The Crowd*，英文公版 EPUB | `books/public-domain/` |
-| 80 | 《地理与世界霸权》 | *Geography and World Power*，1915 英文公版 PDF | `books/public-domain/` |
 | 62 | 《美国大萧条》 | *America's Great Depression*，Mises Institute 官方 EPUB | `books/local-only/` |
+| 80 | 《地理与世界霸权》 | *Geography and World Power*，1915 英文公版 PDF | `books/public-domain/` |
 
 > 第 47 本目前先收录 1923 年德文原版。现代中文译本不因为原著进入公版而自动成为公版，因此暂不把现代中文译本放入公开仓库。
+>
+> 第 18 本暂时没有找到可合法保存的中文完整电子书，所以先保存 Federal Reserve Board 官方发布的四场讲座 PDF。它们是该书内容的直接来源材料，但不是出版后的中文电子书。
 
 只下载可以公开提交的公版文件：
 
@@ -34,7 +37,7 @@ python3 scripts/sync_books.py
 python3 scripts/sync_books.py --scope public-domain
 ```
 
-只下载本地使用、不应提交 Git 的官方免费版本：
+只下载本地使用、不应提交 Git 的官方免费版本/官方配套材料：
 
 ```bash
 python3 scripts/sync_books.py --scope local-only
@@ -47,7 +50,7 @@ python3 scripts/sync_books.py --scope local-only
 因此这里区分：
 
 1. **确认可再分发** → 文件可以进入仓库。
-2. **官方可下载，但版权仍保留** → 脚本下载到 `local-only/`，Git 忽略。
+2. **官方可下载，但版权或其中部分素材的再分发权限未确认** → 脚本下载到 `local-only/`，Git 忽略。
 3. **只能借阅/预览/购买** → 仅保留在线入口。
 
 后续找到新的合法来源时，继续往 `scripts/sync_books.py` 中增加即可。
