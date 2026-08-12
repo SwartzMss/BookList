@@ -26,12 +26,37 @@ python3 scripts/sync_books.py
 | 54 | 《乌合之众》 | *The Crowd*，英文公版 EPUB | `books/public-domain/` |
 | 62 | 《美国大萧条》 | *America's Great Depression*，Mises Institute 官方 EPUB + PDF | `books/local-only/` |
 | 80 | 《地理与世界霸权》 | *Geography and World Power*，1915 英文公版 PDF | `books/public-domain/` |
+| 81 | 《逻辑学入门》 | 原书 *How Logic Works* 作者公开的 LaTeX 源码 ZIP；可在本地尝试编译 PDF | `books/local-only/81-How-Logic-Works-Hans-Halvorson/` |
 
-> 第 47 本还定位到了 Max Weber *General Economic History* 的 1927 年 Frank H. Knight 英译扫描线索，但对应 Internet Archive 条目没有向当前同步脚本暴露稳定可取的 PDF/DjVu 文件。为了不让 GitHub Actions 因单个候选源失败，暂时不自动下载这个英文版；已确认可稳定下载的 1923 德文 PDF 继续保留在仓库。
+> 第 47 本还定位到了 Max Weber *General Economic History* 的 1927 年 Frank H. Knight 英译扫描线索。The Online Books Page / HathiTrust 有页面图像入口，但目前没有确认一个适合 GitHub Actions 稳定直拉、且无需登录/交互的 PDF URL，所以暂不替换仓库里的 1923 德文版。
 >
 > 现代中文译本不因为原著或旧版进入公版而自动成为公版，因此暂不把现代中文译本放入公开仓库。
 >
 > 第 18 本暂时没有找到可合法保存的中文完整电子书，所以先保存 Federal Reserve Board 官方发布的四场讲座 PDF。它们是该书内容的直接来源材料，但不是出版后的中文电子书。
+>
+> 第 81 本的作者 Hans Halvorson 在个人课程/图书页面直接提供了 `logic-works` 的 LaTeX 源码入口，但该 GitHub 仓库目前没有 `LICENSE` 文件。因此这里按保守策略只下载到 `local-only`，不把源码或本地编译出的 PDF 提交到公开仓库。
+
+### 第 81 本：本地编译 PDF
+
+先同步：
+
+```bash
+python3 scripts/sync_books.py --scope local-only
+```
+
+如果本机有完整 TeX Live、`latexmk` 和 `unzip`，可以尝试：
+
+```bash
+bash scripts/build_how_logic_works.sh
+```
+
+成功后会生成：
+
+```text
+books/local-only/81-How-Logic-Works-Hans-Halvorson/81-How-Logic-Works-Hans-Halvorson.pdf
+```
+
+这个 PDF 仍然只放本地，不进入公开 Git 仓库。
 
 只下载可以公开提交的公版文件：
 
