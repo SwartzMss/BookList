@@ -41,9 +41,9 @@ BOOKS = [
         "author": "Max Weber; translated by Frank H. Knight",
         "scope": "public-domain",
         "archive_item": "in.ernet.dli.2015.275058",
-        "archive_ext": ".pdf",
+        "archive_ext": ".djvu",
         "archive_keywords": ["general", "economic", "history"],
-        "dest": "books/public-domain/47-General-Economic-History-Max-Weber-1927-en.pdf",
+        "dest": "books/public-domain/47-General-Economic-History-Max-Weber-1927-en.djvu",
         "source": "Internet Archive (1927 English edition; linked by Wikisource)",
     },
     {
