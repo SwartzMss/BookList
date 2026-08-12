@@ -15,12 +15,15 @@ purchase-only books.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+USER_AGENT = "BookList/1.1 (+personal ebook sync)"
 
 BOOKS = [
     {
@@ -31,6 +34,17 @@ BOOKS = [
         "url": "https://www.gutenberg.org/ebooks/60979.epub3.images",
         "dest": "books/public-domain/40-Reminiscences-of-a-Stock-Operator.epub",
         "source": "Project Gutenberg",
+    },
+    {
+        "id": 47,
+        "title": "General Economic History",
+        "author": "Max Weber; translated by Frank H. Knight",
+        "scope": "public-domain",
+        "archive_item": "in.ernet.dli.2015.275058",
+        "archive_ext": ".pdf",
+        "archive_keywords": ["general", "economic", "history"],
+        "dest": "books/public-domain/47-General-Economic-History-Max-Weber-1927-en.pdf",
+        "source": "Internet Archive (1927 English edition; linked by Wikisource)",
     },
     {
         "id": 47,
@@ -104,7 +118,68 @@ BOOKS = [
         "dest": "books/local-only/62-Americas-Great-Depression.epub",
         "source": "Mises Institute",
     },
+    {
+        "id": 62,
+        "title": "America's Great Depression",
+        "author": "Murray N. Rothbard",
+        "scope": "local-only",
+        "url": "https://cdn.mises.org/Americas%20Great%20Depression_3.pdf",
+        "dest": "books/local-only/62-Americas-Great-Depression.pdf",
+        "source": "Mises Institute",
+    },
 ]
+
+
+def request_json(url: str) -> dict[str, object]:
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(request, timeout=60) as response:
+        return json.load(response)
+
+
+def resolve_archive_url(book: dict[str, object]) -> str:
+    item = str(book["archive_item"])
+    metadata = request_json(f"https://archive.org/metadata/{urllib.parse.quote(item)}")
+    files = metadata.get("files", [])
+    if not isinstance(files, list):
+        raise ValueError(f"Internet Archive item {item} has no file list")
+
+    ext = str(book.get("archive_ext", "")).lower()
+    keywords = [str(k).lower() for k in book.get("archive_keywords", [])]
+    candidates: list[dict[str, object]] = []
+    for entry in files:
+        if not isinstance(entry, dict):
+            continue
+        name = str(entry.get("name", ""))
+        lower_name = name.lower()
+        if ext and not lower_name.endswith(ext):
+            continue
+        candidates.append(entry)
+
+    if not candidates:
+        raise ValueError(f"Internet Archive item {item} has no matching {ext or 'file'}")
+
+    def score(entry: dict[str, object]) -> tuple[int, int, int]:
+        name = str(entry.get("name", "")).lower()
+        keyword_score = sum(1 for keyword in keywords if keyword in name)
+        original_score = 1 if str(entry.get("source", "")).lower() == "original" else 0
+        try:
+            size = int(str(entry.get("size", "0")))
+        except ValueError:
+            size = 0
+        return keyword_score, original_score, size
+
+    chosen = max(candidates, key=score)
+    filename = str(chosen["name"])
+    print(f"[resolve] archive.org item {item} -> {filename}")
+    return f"https://archive.org/download/{urllib.parse.quote(item)}/{urllib.parse.quote(filename)}"
+
+
+def resolve_url(book: dict[str, object]) -> str:
+    if "url" in book:
+        return str(book["url"])
+    if "archive_item" in book:
+        return resolve_archive_url(book)
+    raise ValueError(f"No download source configured for {book['title']}")
 
 
 def download(book: dict[str, object], force: bool = False) -> bool:
@@ -116,23 +191,22 @@ def download(book: dict[str, object], force: bool = False) -> bool:
     dest.parent.mkdir(parents=True, exist_ok=True)
     tmp = dest.with_suffix(dest.suffix + ".part")
 
-    request = urllib.request.Request(
-        str(book["url"]),
-        headers={"User-Agent": "BookList/1.0 (+personal ebook sync)"},
-    )
-
     print(f"[download] {book['title']} <- {book['source']}")
     try:
-        with urllib.request.urlopen(request, timeout=60) as response, tmp.open("wb") as out:
+        url = resolve_url(book)
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(request, timeout=90) as response, tmp.open("wb") as out:
             while True:
                 chunk = response.read(1024 * 1024)
                 if not chunk:
                     break
                 out.write(chunk)
+        if tmp.stat().st_size == 0:
+            raise OSError("downloaded file is empty")
         tmp.replace(dest)
         print(f"[ok] {dest.relative_to(ROOT)} ({dest.stat().st_size / 1024 / 1024:.2f} MiB)")
         return True
-    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+    except (urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
         if tmp.exists():
             tmp.unlink()
         print(f"[failed] {book['title']}: {exc}", file=sys.stderr)
