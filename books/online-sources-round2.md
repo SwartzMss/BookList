@@ -13,6 +13,8 @@
 | 16 | 《老鼠、虱子和历史》 / *Rats, Lice and History* | Preview / Locate | [Open Library](https://openlibrary.org/works/OL3238314W/Rats_lice_and_history) |
 | 56 | 《货币的本质》 / *Money Capital* | 正版电子书购买 / Preview | [Google Play Books](https://play.google.com/store/books/details/Patrick_Bolton_Money_Capital?id=Fi7lEAAAQBAJ) · [Open Library](https://openlibrary.org/works/OL37586018W/Money_Capital) |
 | 59 | 《投资的护城河》 / *Why Moats Matter* | Libby 借阅 | [OverDrive](https://www.overdrive.com/media/1813148/why-moats-matter) |
+| 81 | 《逻辑学入门》 / *How Logic Works: A User's Guide* | 正版图书 / 电子阅读平台 | [Princeton University](https://collaborate.princeton.edu/en/publications/how-logic-works-a-users-guide/) · [Google Books](https://books.google.com/books/about/How_Logic_Works.html?id=d_DeDwAAQBAJ) |
+| 82 | 《上帝掷骰子吗？量子物理史话》 | 中文正版电子书购买 / 试读 | [得到](https://www.dedao.cn/ebook/detail?id=Jjrvne28LQ2OjoRqkgdnmJX6NADGlWxvYmwx1KvbBz97eaMP4VZrpEYy5VB6adNX) |
 | 85 | 《暴力的阴影》 / *In the Shadow of Violence* | Cambridge 数字版购买 / 机构访问 | [Cambridge Core](https://www.cambridge.org/core/books/in-the-shadow-of-violence/2729F16713CBAB3B0CF405DBBF1721EE) |
 | 87 | 《价格的发现》 / *Discovering Prices* | 正版 e-book（EPUB/PDF via app） | [Columbia University Press](https://cup.columbia.edu/book/discovering-prices/9780231175982/) |
 
