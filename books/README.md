@@ -22,12 +22,15 @@ python3 scripts/sync_books.py
 |---:|---|---|---|
 | 18 | 《金融的本质》 | Bernanke 2012 四场官方讲座 PDF（对应原书讲座来源，**不是中文译本电子书**） | `books/local-only/18-Federal-Reserve-and-Financial-Crisis/` |
 | 40 | 《股票作手回忆录》 | *Reminiscences of a Stock Operator*，英文公版 EPUB | `books/public-domain/` |
+| 47 | 《世界经济简史》 | Max Weber *General Economic History*，Frank H. Knight 英译，1927 英文版 PDF | `books/public-domain/` |
 | 47 | 《世界经济简史》 | Max Weber *Wirtschaftsgeschichte*，1923 德文原版 PDF | `books/public-domain/` |
 | 54 | 《乌合之众》 | *The Crowd*，英文公版 EPUB | `books/public-domain/` |
-| 62 | 《美国大萧条》 | *America's Great Depression*，Mises Institute 官方 EPUB | `books/local-only/` |
+| 62 | 《美国大萧条》 | *America's Great Depression*，Mises Institute 官方 EPUB + PDF | `books/local-only/` |
 | 80 | 《地理与世界霸权》 | *Geography and World Power*，1915 英文公版 PDF | `books/public-domain/` |
 
-> 第 47 本目前先收录 1923 年德文原版。现代中文译本不因为原著进入公版而自动成为公版，因此暂不把现代中文译本放入公开仓库。
+> 第 47 本新增了更实用的 1927 年英文译本。Wikisource 的 Max Weber 作者页把 *General Economic History* 1927 版链接到 Internet Archive；同步脚本会通过 Internet Archive metadata API 自动解析实际 PDF 文件名，避免硬编码扫描文件名。
+>
+> 现代中文译本不因为原著或旧英文译本进入公版而自动成为公版，因此暂不把现代中文译本放入公开仓库。
 >
 > 第 18 本暂时没有找到可合法保存的中文完整电子书，所以先保存 Federal Reserve Board 官方发布的四场讲座 PDF。它们是该书内容的直接来源材料，但不是出版后的中文电子书。
 
