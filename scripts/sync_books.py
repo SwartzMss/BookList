@@ -21,7 +21,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-USER_AGENT = "BookList/1.1 (+personal ebook sync)"
+USER_AGENT = "BookList/1.2 (+personal ebook sync)"
 
 BOOKS = [
     {
@@ -113,6 +113,15 @@ BOOKS = [
         "url": "https://cdn.mises.org/Americas%20Great%20Depression_3.pdf",
         "dest": "books/local-only/62-Americas-Great-Depression.pdf",
         "source": "Mises Institute",
+    },
+    {
+        "id": 81,
+        "title": "How Logic Works - author-posted LaTeX source",
+        "author": "Hans Halvorson",
+        "scope": "local-only",
+        "url": "https://github.com/hhalvors/logic-works/archive/refs/heads/main.zip",
+        "dest": "books/local-only/81-How-Logic-Works-Hans-Halvorson/logic-works-main.zip",
+        "source": "Hans Halvorson / GitHub",
     },
 ]
 
